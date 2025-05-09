@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SooqElite | متجر إلكتروني راقٍ</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <style>
+    :root {
+      --bg-light: #f4f4f9;
+      --bg-dark: #1e1e2f;
+      --text-light: #1e1e2f;
+      --text-dark: #f4f4f9;
+      --primary: #5c67f2;
+      --transition: 0.4s ease-in-out;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .theme-toggle button {
+      margin-left: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      transition: transform var(--transition);
+    }
+
+    .theme-toggle button:hover {
+      transform: scale(1.2);
+    }
+
+    .container {
+      padding: 2rem;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .cta-buttons .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .cta-buttons .btn:hover {
+      background-color: #434bd8;
+      transform: translateY(-2px);
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 220px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .buy-btn {
+      margin-top: 0.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .buy-btn:hover {
+      background-color: #434bd8;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #eee;
+      margin-bottom: 70px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--primary);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 60px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform var(--transition);
+    }
+
+    .bottom-nav a:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">SooqElite</h1>
+    <div class="theme-toggle">
+      <button id="darkModeBtn">🌙</button>
+      <button id="lightModeBtn">☀️</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>مرحبًا بك في سوق النخبة</h2>
+      <p>اكتشف منتجات عالية الجودة من موردين موثوقين، أو انضم كبائع!</p>
+      <div class="cta-buttons">
+        <a href="#register-seller" class="btn">سجّل كمورد</a>
+        <a href="#browse" class="btn">تصفّح المنتجات</a>
+      </div>
+    </section>
+
+    <section id="products" class="products">
+        <!-- منتج 1 -->
+        <div class="product-card">
+          <a href="product-detail.html?productId=1">
+            <img src="https://via.placeholder.com/200" alt="منتج 1">
+            <h3>منتج 1</h3>
+            <p>وصف مختصر للمنتج 1</p>
+            <span class="price">250 جنيه</span>
+          </a>
+          <button class="buy-btn">شراء</button>
+        </div>
+      
+        <!-- منتج 2 -->
+        <div class="product-card">
+          <a href="product-detail.html?productId=2">
+            <img src="https://via.placeholder.com/200" alt="منتج 2">
+            <h3>منتج 2</h3>
+            <p>وصف مختصر للمنتج 2</p>
+            <span class="price">350 جنيه</span>
+          </a>
+          <button class="buy-btn">شراء</button>
+        </div>
+      
+        <!-- منتج 3 -->
+        <div class="product-card">
+          <a href="product-detail.html?productId=3">
+            <img src="https://via.placeholder.com/200" alt="منتج 3">
+            <h3>منتج 3</h3>
+            <p>وصف مختصر للمنتج 3</p>
+            <span class="price">150 جنيه</span>
+          </a>
+          <button class="buy-btn">شراء</button>
+        </div>
+      
+        <!-- منتج 4 -->
+        <div class="product-card">
+          <a href="product-detail.html?productId=4">
+            <img src="https://via.placeholder.com/200" alt="منتج 4">
+            <h3>منتج 4</h3>
+            <p>وصف مختصر للمنتج 4</p>
+            <span class="price">450 جنيه</span>
+          </a>
+          <button class="buy-btn">شراء</button>
+        </div>
+      </section>
+      
+      
+      
+            
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 SooqElite. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <nav class="bottom-nav">
+    <a href="#home">🏠 <span>الرئيسية</span></a>
+    <a href="#register">📝 <span>التسجيل</span></a>
+    <a href="#account">👤 <span>الحساب</span></a>
+    <a href="#more">⋯ <span>المزيد</span></a>
+  </nav>
+
+  <script>
+    const darkBtn = document.getElementById("darkModeBtn");
+    const lightBtn = document.getElementById("lightModeBtn");
+
+    darkBtn.addEventListener("click", () => {
+      document.body.classList.add("dark-mode");
+    });
+
+    lightBtn.addEventListener("click", () => {
+      document.body.classList.remove("dark-mode");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل المنتج | SooqElite</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      margin: 0;
+      padding: 0;
+    }
+
+    .product-detail-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .product-image {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-info {
+      text-align: center;
+      margin-top: 2rem;
+      max-width: 600px;
+    }
+
+    .product-info h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .product-info p {
+      margin: 1rem 0;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .buy-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background-color: #434bd8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-detail-container">
+    <img class="product-image" id="productImage" src="https://via.placeholder.com/300" alt="منتج">
+    <div class="product-info">
+      <h1 id="productName">اسم المنتج</h1>
+      <p id="productDescription">وصف مفصل للمنتج. هذا النص يمكن أن يتضمن التفاصيل التي تميز المنتج عن غيره.</p>
+      <span class="price" id="productPrice">250 جنيه</span>
+      <button class="buy-btn">شراء</button>
+    </div>
+  </div>
+
+  <script>
+    // قراءة معلمات الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('productId');
+
+    // يمكنك استخدام productId لتحميل التفاصيل من قاعدة بيانات أو مصادر أخرى
+    // هنا افتراضياً سأعرض بيانات ثابتة لكل منتج بناءً على الـ productId
+
+    if (productId === '1') {
+      document.getElementById('productName').textContent = 'اسم المنتج 1';
+      document.getElementById('productDescription').textContent = 'وصف مفصل للمنتج 1';
+      document.getElementById('productPrice').textContent = '250 جنيه';
+      document.getElementById('productImage').src = 'https://via.placeholder.com/300';
+    } else {
+      // بيانات افتراضية في حال عدم وجود productId
+      document.getElementById('productName').textContent = 'اسم المنتج غير موجود';
+      document.getElementById('productDescription').textContent = 'لا توجد تفاصيل لهذا المنتج.';
+      document.getElementById('productPrice').textContent = 'غير متوفر';
+    }
+  </script>
+
+</body>
+</html>
