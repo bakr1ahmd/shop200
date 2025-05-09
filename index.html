@@ -178,11 +178,11 @@
         }
 
         .bg-img-1 {
-            background-image: url('/tutorials/css/templates/parallax-bg-1.jpg');
+            background-image: url(1.jpg);
         }
 
         .bg-img-2 {
-            background-image: url('/tutorials/css/templates/parallax-bg-2.jpg');
+            background-image: url(2.jpg);
         }
 
         section {
@@ -350,11 +350,61 @@
                 display: flex;
             }
         }
+        /* Default (Light Mode) */
+:root {
+    --white: white;
+    --black: black;
+    --background-color: white;
+    --text-color: black;
+    --button-color: #07064c;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Dark Mode */
+[data-theme='dark'] {
+    --white: white;
+    --black: black;
+    --background-color: black;
+    --text-color: white;
+    --button-color: #4c0848;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    display: flex; /* لجعل الزر يستخدم flexbox */
+    justify-content: center; /* لتوسيط المحتوى أفقيًا */
+    align-items: center; /* لتوسيط المحتوى عموديًا */
+    text-align: center; /* لضمان أن النص في المنتصف */
+}
+
+button.theme-toggle-btn {
+    background-color: var(--button-color);
+    color: var(--white);
+}
+
+button.language-toggle-btn {
+    background-color: #242323;
+    color: var(--white);
+}
+
     </style>
 </head>
 
 <body>
-  </div>
+
     <div class="container">
 
         <nav>
@@ -376,6 +426,7 @@
                 </a>
             </div>
         </nav>
+        
         <main>
             <section class="parallax-effect bg-img-1">
                 <h1>
@@ -478,6 +529,9 @@
                 <div class="copyright">
                     Copyright © 2014 - 2023 WebsiteName. All Rights Reserved.
                 </div>
+                 <!-- Buttons for switching Dark/Light Mode and Language -->
+<button class="theme-toggle-btn" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+<button class="language-toggle-btn" onclick="toggleLanguage()">Switch Language</button>
             </footer>
         </main>
         <div id="sidenav">
@@ -495,6 +549,45 @@
             var sidenav = document.getElementById('sidenav');
             sidenav.style.display = (sidenav.style.display == 'none' || sidenav.style.display == '') ? 'block' : 'none';
         }
+        // Function to toggle Dark/Light mode
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Save theme preference to localStorage
+}
+
+// Function to toggle between Arabic and English language
+function toggleLanguage() {
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    document.documentElement.lang = newLang;
+    localStorage.setItem('lang', newLang); // Save language preference to localStorage
+
+    // Update text content based on the selected language
+    setLanguage();
+}
+
+// Load saved theme and language preferences on page load
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+const savedLang = localStorage.getItem('lang') || 'en';
+document.documentElement.lang = savedLang;
+
+// Set language based on preference
+function setLanguage() {
+    const lang = document.documentElement.lang;
+    const greetingText = lang === 'ar' ? 'مرحبًا، أهلاً وسهلاً!' : 'Hello, welcome!';
+    const descriptionText = lang === 'ar' ? 'هذا نص تجريبي للموقع.' : 'This is an example text for the website.';
+    
+    document.getElementById('greeting').textContent = greetingText;
+    document.getElementById('description').textContent = descriptionText;
+}
+
+// Set initial language text when the page loads
+setLanguage();
+
     </script>
 </body>
 
